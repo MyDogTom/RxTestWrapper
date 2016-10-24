@@ -49,7 +49,7 @@ public class RxTestWrapper<T> {
     }
 
     /** Wrapper around {@link TestSubscriber#assertTerminalEvent()} */
-    public final RxTestWrapper<T> terminalEvent() {
+    public final RxTestWrapper<T> hasTerminalEvent() {
         testSubscriber.assertTerminalEvent();
         return this;
     }
@@ -61,7 +61,7 @@ public class RxTestWrapper<T> {
     }
 
     /** Wraps {@link TestSubscriber#assertNoErrors()} */
-    public final RxTestWrapper<T> noErrors() {
+    public final RxTestWrapper<T> hasNoErrors() {
         testSubscriber.assertNoErrors();
         return this;
     }
@@ -79,7 +79,7 @@ public class RxTestWrapper<T> {
     }
 
     /** Wraps {@link TestSubscriber#assertError(Class)} */
-    public final RxTestWrapper<T> error(Class<? extends Throwable> clazz) {
+    public final RxTestWrapper<T> hasRrror(Class<? extends Throwable> clazz) {
         testSubscriber.assertError(clazz);
         return this;
     }
@@ -87,47 +87,52 @@ public class RxTestWrapper<T> {
     /**
      * Wraps {@link TestSubscriber#assertError(Throwable)}
      */
-    public final RxTestWrapper<T> error(Throwable throwable) {
+    public final RxTestWrapper<T> hasRrror(Throwable throwable) {
         testSubscriber.assertError(throwable);
         return this;
     }
 
     /** Wraps {@link TestSubscriber#assertNoTerminalEvent()} */
-    public final RxTestWrapper<T> noTerminalEvent() {
+    public final RxTestWrapper<T> hasNoTerminalEvent() {
         testSubscriber.assertNoTerminalEvent();
         return this;
     }
 
     /** Wraps {@link TestSubscriber#assertNoValues()} */
-    public final RxTestWrapper<T> noValues() {
+    public final RxTestWrapper<T> hasNoValues() {
         testSubscriber.assertNoValues();
         return this;
     }
 
     /** Wraps {@link TestSubscriber#assertValueCount(int)} */
-    public final RxTestWrapper<T> valueCount(int i) {
+    public final RxTestWrapper<T> hasValueCount(int i) {
         testSubscriber.assertValueCount(i);
         return this;
     }
 
     /** Wraps {@link TestSubscriber#assertValues(Object[])} */
-    public final RxTestWrapper<T> values(T... values) {
+    public final RxTestWrapper<T> hasValues(T... values) {
         testSubscriber.assertValues(values);
         return this;
     }
 
     /** Wraps {@link TestSubscriber#assertValue(Object)} */
-    public final RxTestWrapper<T> value(T value) {
+    public final RxTestWrapper<T> hasValue(T value) {
         testSubscriber.assertValue(value);
         return this;
     }
 
     /** Wraps {@link TestSubscriber#assertValuesAndClear(Object, Object[])} */
-    public final RxTestWrapper<T> valuesAndClear(T expectedFirstValue, T... expectedRestValues) {
+    public final RxTestWrapper<T> hasValuesAndClear(T expectedFirstValue, T... expectedRestValues) {
         testSubscriber.assertValuesAndClear(expectedFirstValue, expectedRestValues);
         return this;
     }
 
+    /**
+     * Asserts that there is only a single received onNext event and that emission exactly specific type.
+     * @param type
+     * expected type
+     */
     public final RxTestWrapper<T> valueIsExactlyInstanceOf(Class<? extends T> type) {
         testSubscriber.assertValueCount(1);
         T value = testSubscriber.getOnNextEvents().get(0);
