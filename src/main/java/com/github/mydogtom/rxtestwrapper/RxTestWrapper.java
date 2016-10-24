@@ -8,11 +8,7 @@ import rx.Single;
 import rx.observables.BlockingObservable;
 import rx.observers.TestSubscriber;
 
-/**
- * This is a temporary simplified version. Wrapper will be extracted in a separate library later.
- *
- * IMPORTANT If you need a method that is not currently present, please add it or ask @svyatoslav.chatchenko
- */
+/** A wrapper around {@link TestSubscriber} that provides a fluent API */
 public class RxTestWrapper<T> {
     private final TestSubscriber<T> testSubscriber;
 
@@ -79,7 +75,7 @@ public class RxTestWrapper<T> {
     }
 
     /** Wraps {@link TestSubscriber#assertError(Class)} */
-    public final RxTestWrapper<T> hasRrror(Class<? extends Throwable> clazz) {
+    public final RxTestWrapper<T> hasError(Class<? extends Throwable> clazz) {
         testSubscriber.assertError(clazz);
         return this;
     }
@@ -87,7 +83,7 @@ public class RxTestWrapper<T> {
     /**
      * Wraps {@link TestSubscriber#assertError(Throwable)}
      */
-    public final RxTestWrapper<T> hasRrror(Throwable throwable) {
+    public final RxTestWrapper<T> hasError(Throwable throwable) {
         testSubscriber.assertError(throwable);
         return this;
     }
