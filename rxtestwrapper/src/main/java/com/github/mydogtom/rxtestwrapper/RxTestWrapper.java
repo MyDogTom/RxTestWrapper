@@ -30,8 +30,8 @@ public class RxTestWrapper<T> {
         return new RxTestWrapper<>(single.toObservable());
     }
 
-    public static <T> RxTestWrapper<T> assertThat(Completable completable) {
-        return new RxTestWrapper<T>(completable.<T>toObservable());
+    public static RxTestWrapper<Object> assertThat(Completable completable) {
+        return new RxTestWrapper<>(completable.toObservable());
     }
 
     public static <T> RxTestWrapper<T> assertThat(BlockingObservable<T> blockingObservable) {
