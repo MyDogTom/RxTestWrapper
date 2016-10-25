@@ -1,0 +1,14 @@
+apply plugin: 'java'
+
+def RXJAVA_VERSION = '1.2.1'
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile "io.reactivex:rxjava:$RXJAVA_VERSION"
+    testCompile 'junit:junit:4.12'
+    testCompile "io.reactivex:rxjava:$RXJAVA_VERSION"
+}
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
+
+
