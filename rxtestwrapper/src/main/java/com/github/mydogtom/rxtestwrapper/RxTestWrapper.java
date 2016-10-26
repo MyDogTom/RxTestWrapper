@@ -30,7 +30,7 @@ public class RxTestWrapper<T> {
         return new RxTestWrapper<>(single.toObservable());
     }
 
-    public static <T> RxTestWrapper<T> assertThat(Completable completable) {
+    public static RxTestWrapper<Object> assertThat(Completable completable) {
         return new RxTestWrapper<>(completable.toObservable());
     }
 
@@ -134,7 +134,7 @@ public class RxTestWrapper<T> {
         T value = testSubscriber.getOnNextEvents().get(0);
         if (!type.equals(value.getClass())) {
             throw new AssertionError(String.format("Expected value to be instance of %s, \nbut was: %s",
-                    type.getName(), value.getClass().getName()));
+                  type.getName(), value.getClass().getName()));
         }
         return this;
     }

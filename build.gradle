@@ -1,20 +1,40 @@
-group 'com.github.mydogtom'
-version '0.1'
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
 
-apply plugin: 'java'
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
 
-sourceCompatibility = 1.8
-
-repositories {
-    jcenter()
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+    ext.kotlin_version = '1.0.4'
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
 }
 
-def RXJAVA_VERSION = '1.2.1'
+allprojects {
+    repositories {
+        jcenter()
+    }
 
-dependencies {
-    compile "io.reactivex:rxjava:$RXJAVA_VERSION"
+}
 
-    testCompile 'junit:junit:4.12'
-    testCompile "io.reactivex:rxjava:$RXJAVA_VERSION"
 
+subprojects{
+    apply plugin: 'java'
+    test {
+        testLogging.events('failed', 'passed', 'skipped')
+    }
+}
+
+ext {
+    RXJAVA_VERSION = "1.2.1"
+    JUNIT_VERSION = "4.12"
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
 }
