@@ -1,33 +1,19 @@
-buildscript {
-    ext.kotlin_version = '1.0.4'
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    }
-}
-apply plugin: 'java'
 apply plugin: 'kotlin'
 
-repositories {
-    jcenter()
-}
 sourceSets {
     main.java.srcDirs += 'src/main/kotlin'
 }
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
 
 
-def RXJAVA_VERSION = '1.2.1'
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':rxtestwrapper')
     compile "io.reactivex:rxjava:$RXJAVA_VERSION"
-    testCompile 'junit:junit:4.12'
-    testCompile "io.reactivex:rxjava:$RXJAVA_VERSION"
+    testCompile "junit:junit:$JUNIT_VERSION"
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 
-sourceCompatibility = "1.8"
-targetCompatibility = "1.8"
 
