@@ -37,7 +37,7 @@ repositories {
 }
 
 dependencies {
-    testCompile 'com.github.MyDogTom:RxTestWrapper:v0.1.0'
+    testCompile 'com.github.MyDogTom:RxTestWrapper:v0.1.1'
 }
 ```
 
