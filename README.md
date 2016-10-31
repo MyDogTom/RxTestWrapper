@@ -3,7 +3,7 @@ Wrapper around `TestSubscriber`. Allows chaining of assertion methods, making co
 
 #Example
 **pure rxJava syntax**
-```
+```java
     @Test
     public void pureRxJavaSyntax() {
         TestSubscriber<String> testSubscriber = TestSubscriber.create();
@@ -13,7 +13,7 @@ Wrapper around `TestSubscriber`. Allows chaining of assertion methods, making co
     }
 ```
 **with RxTestWrapper**
-```
+```java
     @Test
     public void syntaxWithRxTestWrapper() {
         RxTestWrapper.assertThat(Observable.just("test"))
@@ -21,6 +21,16 @@ Wrapper around `TestSubscriber`. Allows chaining of assertion methods, making co
                 .completed();
     }
 ```
+**with RxTestWrapper and Kotlin**
+```kotlin
+    @Test
+    fun syntaxWithRxTestWrapper() {
+        Observable.just("test").test()
+                .hasValue("test")
+                .completed()
+    }
+```
+
 
 #Idea and advantages
 Initial idea is taken from [RxAssertions](https://github.com/ubiratansoares/rxassertions) and [PR#3304](https://github.com/ReactiveX/RxJava/pull/3304)  from rxJava (which is rejected due to binary incompatibility).
