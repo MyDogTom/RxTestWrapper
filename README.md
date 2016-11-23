@@ -1,3 +1,5 @@
+#DEPRECATED
+[RxJava 1.2.3](https://github.com/ReactiveX/RxJava/releases/tag/v1.2.3) introduced `AssertableSubscriber`. It provides identical functionality as `TestSubscriber` but allows chaining of assertions. Also `Observable`, `Completable` and `Single` have `test()` method that returns `AssertableSubscriber`.
 # RxTestWrapper
 Wrapper around `TestSubscriber`. Allows chaining of assertion methods, making code more concise and more readable.
 
